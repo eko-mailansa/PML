@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>#{prop.title}</title>
+        <link href="src/UnivStyleSheet.css" rel="stylesheet"/>
+        <!--[if lte IE 7]>
+        <style>
+        .content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+        ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+        </style>
+        <![endif]--></h:head>
+    <h:body>
+        <h:panelGroup>
+            <h:form>
+                <div class="container">
+                    <div class="header"><ui:include src="include/header.xhtml"/></div><!-- end .header -->
+                    <div class="sidebar1">
+                        <ui:include src="#{univBean.userLogin.menuKu}"/>
+                        <!-- end .sidebar1 --></div>
+                    <div class="content2">
+                        <ui:include src="include/title.xhtml"/>
+
+                        <center><div align="center" style="width: 95%;">
+                                <h1>Raport Nilai #{univBean.userLogin.peranKu} #{univBean.userLogin.userName}</h1>
+                                Semester #{univBean.semesterActive.semester}, Tahun #{univBean.semesterActive.tahun1}/#{univBean.semesterActive.tahun2}
+                                &nbsp;&nbsp;&nbsp;
+                                <h:outputLabel value="#{univBean.serverDate}">
+                                    <f:convertDateTime pattern="dd/MM/YYYY hh:mm"/>
+                                </h:outputLabel>
+                                <p:separator/>
+                                <h:panelGrid columns="6">
+                                    NIM
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.userLogin.userName}</h:panelGroup>
+
+                                    Semester
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.semesterActive.semester}-#{univBean.semesterActive.tahun1}/#{univBean.semesterActive.tahun2}</h:panelGroup>
+
+                                    No Reg
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.mahasiswa.noReg}</h:panelGroup>
+
+                                    NIP Wali
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.dosenwali.nip}</h:panelGroup>
+
+                                    Nama
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.mahasiswa.namaMahasiswa}</h:panelGroup>
+
+                                    Nama Wali
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.dosen.namaDosen}</h:panelGroup>
+
+                                    Alamat
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.mahasiswa.alamat}</h:panelGroup>
+
+                                    Fakultas
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.fakMahasiswa.namaFak}</h:panelGroup>
+
+                                    Kode Pos
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.mahasiswa.kodePos}</h:panelGroup>
+
+                                    Program Studi
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.programStudi.namaProg}</h:panelGroup>
+                                </h:panelGrid>
+                                <p:separator/>
+
+                                <p:dataTable value="#{univBean.myPendaftaranActive.pendaftaranDetailList}" var="daftarDetail">
+                                    <p:column>
+                                        <f:facet name="header">Tahun</f:facet>
+                                            #{univBean.myPendaftaranActive.semester.tahun1}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Semester</f:facet>
+                                            #{univBean.myPendaftaranActive.semester.semester}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Kode Kuliah</f:facet>
+                                            #{daftarDetail.idKelas.idOpenMKPML.kodeMK}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Nama Mata Kuliah</f:facet>
+                                            #{daftarDetail.idKelas.idOpenMKPML.mataKuliah.namaMK}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">SKS</f:facet>
+                                            #{daftarDetail.idKelas.idOpenMKPML.mataKuliah.sks}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Nilai</f:facet>
+                                            #{daftarDetail.nilai}
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Nilai PS</f:facet>
+                                            #{daftarDetail.nilaiPS}
+                                    </p:column>
+                                </p:dataTable>
+
+                                #{univBean.myPendaftaranActive.jumSKS} SKS<br/>
+                                NR = #{univBean.myPendaftaranActive.nr}
+
+                            </div></center><br/>
+                        <!-- end .content --></div>
+                    <div class="footer"><ui:include src="include/footer.xhtml"/></div><!-- end .footer -->
+                </div>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup rendered="false">
+            <ui:include src="lock.xhtml"/>
+        </h:panelGroup>
+    </h:body>
+</html>
+

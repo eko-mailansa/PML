@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>#{prop.title}</title>
+        <link href="src/UnivStyleSheet.css" rel="stylesheet"/>
+        <!--[if lte IE 7]>
+        <style>
+        .content { margin-right: -1px; }
+        ul.nav a { zoom: 1; }
+        </style>
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl showDetail="true"/>
+            <div class="container">
+                <div class="header"><ui:include src="include/header.xhtml"/></div><!-- end .header -->
+                <div class="content" align="center" style="height: 410px; padding-top: 50px;">
+                    <h4>Login</h4>
+                    <h:panelGrid columns="2" style="padding-left: 10px;">
+                        <p:outputLabel for="user" value="username : " />
+                        <p:inputText id="user" value="#{univBean.username}" required="true" requiredMessage="username harus di isi!" />
+                        <p:outputLabel for="pass" value="password : "  />
+                        <p:password id="pass" value="#{univBean.password}" required="true" requiredMessage="password harus di isi!" />
+                        <h:panelGroup/>
+                        <h:commandButton value="login" action="#{univBean.login}" />
+                    </h:panelGrid>
+                    <!-- end .content --></div>
+                <div class="footer"><ui:include src="include/footer.xhtml"/></div><!-- end .footer -->
+                <!-- end .container --></div>
+        </h:form>
+    </h:body>
+</html>
+

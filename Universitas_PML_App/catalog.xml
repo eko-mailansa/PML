@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Universitas_MDM_service/Universitas_MDM_service?wsdl" uri="src/conf/xml-resources/web-service-references/Universitas_MDM_service/wsdl/localhost_8080/Universitas_MDM_service/Universitas_MDM_service.wsdl"/>
+    <system systemId="http://localhost:8080/Universitas_MDM_service/Universitas_MDM_service?xsd=1" uri="src/conf/xml-resources/web-service-references/Universitas_MDM_service/wsdl/localhost_8080/Universitas_MDM_service/Universitas_MDM_service.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MDMWebService/MDMWebService?wsdl" uri="src/conf/xml-resources/web-service-references/MDMWebService/wsdl/localhost_8080/MDMWebService/MDMWebService.wsdl"/>
+    <system systemId="http://localhost:8080/MDMWebService/MDMWebService?xsd=1" uri="src/conf/xml-resources/web-service-references/MDMWebService/wsdl/localhost_8080/MDMWebService/MDMWebService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MDMService1/MDMService1?wsdl" uri="src/conf/xml-resources/web-service-references/MDMService1/wsdl/localhost_8080/MDMService1/MDMService1.wsdl"/>
+    <system systemId="http://localhost:8080/MDMService1/MDMService1?xsd=1" uri="src/conf/xml-resources/web-service-references/MDMService1/wsdl/localhost_8080/MDMService1/MDMService1.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MSMService/MSMService?wsdl" uri="src/conf/xml-resources/web-service-references/MSMService/wsdl/localhost_8080/MSMService/MSMService.wsdl"/>
+    <system systemId="http://localhost:8080/MSMService/MSMService?xsd=1" uri="src/conf/xml-resources/web-service-references/MSMService/wsdl/localhost_8080/MSMService/MSMService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MDMService/MDMService?wsdl" uri="src/conf/xml-resources/web-service-references/MDMService/wsdl/localhost_8080/MDMService/MDMService.wsdl"/>
+    <system systemId="http://localhost:8080/MDMService/MDMService?xsd=1" uri="src/conf/xml-resources/web-service-references/MDMService/wsdl/localhost_8080/MDMService/MDMService.xsd_1.xsd"/>
+</catalog>
