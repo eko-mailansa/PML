@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Hello from Facelets
+            <p:dataTable style="width: 50%;" value="#{dosenBean.myDosens}" var="dosen">
+                <p:column>
+                    <f:facet name="header">NIP</f:facet>
+                        #{dosen.nip}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Nama</f:facet>
+                        #{dosen.namaDosen}
+                </p:column>
+            </p:dataTable>
+            <p:dataTable style="width: 50%;" value="#{dosenBean.xxx2}" var="xx" >
+                <p:column>
+                    <f:facet name="header">NIP</f:facet>
+                        #{xx.id}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Nama</f:facet>
+                        #{xx.nama}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Kelas</f:facet>
+                        #{xx.kelas}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Mak</f:facet>
+                        #{xx.mak}
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

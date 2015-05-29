@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>#{prop.title}</title>
+        <link href="src/UnivStyleSheet.css" rel="stylesheet"/>
+        <!--[if lte IE 7]>
+        <style>
+        .content { margin-right: -1px; }
+        ul.nav a { zoom: 1; }
+        </style>
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl showDetail="true"/>
+            <div class="container">
+                <div class="header"><ui:include src="include/header.xhtml"/></div><!-- end .header -->
+                <div class="sidebar1">
+                    <ul class="nav">
+                        <li><h:outputLink value="http://google.com">google</h:outputLink></li>
+                        <li><h:outputLink value="http://google.com">google</h:outputLink></li>
+                        <li><h:outputLink value="http://google.com">google</h:outputLink></li>
+                        <li><h:outputLink value="http://google.com">google</h:outputLink></li>
+                        <li><h:outputLink value="http://google.com">google</h:outputLink></li>
+                    </ul>
+                    <p> The above links demonstrate a basic navigational structure using an unordered list styled with CSS. Use this as a starting point and modify the properties to produce your own unique look. If you require flyout menus, create your own using a Spry menu, a menu widget from Adobe's Exchange or a variety of other javascript or CSS solutions.</p>
+                    <p>If you would like the navigation along the top, simply move the ul.nav to the top of the page and recreate the styling.</p>
+                    <!-- end .sidebar1 --></div>
+                <div class="content">
+                    <h1>Forbidden!!!</h1>
+                    <p>Maaf, Silahkan Login!!</p>
+                    <!-- end .content --></div>
+                <div class="sidebar2">
+                    <h4>Login</h4>
+                    <h:panelGrid columns="2" style="padding-left: 10px;">
+                        <p:outputLabel for="username" value="username : " />
+                        <p:inputText id="username" value="#{univBean.username}" required="true" requiredMessage="username harus di isi!" />
+                        <p:outputLabel for="password" value="password : "  />
+                        <p:password id="password" value="#{univBean.password}" required="true" requiredMessage="password harus di isi!" />
+                        <h:commandButton value="login" action="#{univBean.login()}"/>&nbsp;&nbsp;
+                        <a href="#">forgot password</a>
+                    </h:panelGrid>
+                    <!-- end .sidebar2 --></div>
+                <div class="footer">
+                    <p>This .footer contains the declaration position:relative; to give Internet Explorer 6 hasLayout for the .footer and cause it to clear correctly. If you're not required to support IE6, you may remove it.</p>
+                    <!-- end .footer --></div>
+                <!-- end .container --></div>
+        </h:form>
+    </h:body>
+</html>
+

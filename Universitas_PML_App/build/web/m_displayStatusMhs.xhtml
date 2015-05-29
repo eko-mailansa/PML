@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>#{prop.title}</title>
+        <link href="src/UnivStyleSheet.css" rel="stylesheet"/>
+        <!--[if lte IE 7]>
+        <style>
+        .content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+        ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+        </style>
+        <![endif]--></h:head>
+    <h:body>
+        <h:panelGroup>
+            <h:form>
+                <div class="container">
+                    <div class="header"><ui:include src="include/header.xhtml"/></div><!-- end .header -->
+                    <div class="sidebar1">
+                        <ui:include src="#{univBean.userLogin.menuKu}"/>
+                        <!-- end .sidebar1 --></div>
+                    <div class="content2">
+                        <ui:include src="include/title.xhtml"/>
+
+                        <center><div align="center" style="width: 95%;">
+                                <h1>Display Status Mahasiswa</h1>
+                                <p:separator/>
+                                <b>Data Mahasiswa</b>
+                                <h:panelGrid columns="3">
+                                    NIM/No Reg/Nama
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.userLogin.userName} / #{univBean.mahasiswa.noReg} / #{univBean.mahasiswa.namaMahasiswa}</h:panelGroup>
+                                    NIP/Dosen Wali
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.dosen.nip} / #{univBean.dosen.namaDosen}</h:panelGroup>
+                                    Fakultas
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.fakMahasiswa.keteranganFak}</h:panelGroup>
+                                    Program Studi
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.programStudi.namaProg}</h:panelGroup>
+                                </h:panelGrid>
+
+                                <br/>
+                                <b>
+                                    Data Prestasi Mahasiswa per 
+                                    <h:outputLabel value="#{univBean.serverDate}">
+                                        <f:convertDateTime pattern="dd MMMMM YYYY hh:mm:ss"/>
+                                    </h:outputLabel>
+                                </b>
+                                <h:dataTable value="#{univBean.myPendaftaran}" var="pml">
+                                    <h:column>
+                                        NR/Jml MK/SKS semester #{pml.semester.semester} #{pml.semester.tahun1}/#{pml.semester.tahun2}
+                                        : 
+                                        #{pml.nr}/#{pml.pendaftaranDetailList.size()}/#{pml.jumSKS}
+                                    </h:column>
+                                </h:dataTable>
+
+                                <h:panelGroup rendered="#{univBean.grade == 2}">
+                                    <div align="left" style="font-size: small;">Jika NR semester lalu (atau dua semester sebelumnya jika nilai semester 
+                                        terakhir belum lengkap)>=3.00 boleh mengambil beban akademik setara 16 SKS(lihat buku 
+                                        Peraturan Akademik 2013 pasal 4.4)</div>
+                                </h:panelGroup>
+
+                                <br/>
+                                <b>
+                                    Status Berkaitan dengan Pendaftaran per 
+                                    <h:outputLabel value="#{univBean.serverDate}">
+                                        <f:convertDateTime pattern="dd MMMMM YYYY hh:mm:ss"/>
+                                    </h:outputLabel>
+                                </b>
+                                <h:panelGrid columns="3">
+                                    Status Keuangan
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>#{univBean.userLogin.userName}</h:panelGroup>
+                                    Status Kasus
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup><font color="navy">Tidak Ada</font></h:panelGroup>
+                                    Status Rencana Studi
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup>
+                                        <font color="green">#{univBean.myPendaftaranActive.status}</font>
+                                        <h:panelGroup rendered="#{univBean.myPendaftaranActive.statusApprove}">
+                                            <font color="green">, disetujui Dosen Wali (#{univBean.myPendaftaranActive.tglStatusApprove})</font>
+                                        </h:panelGroup>
+                                    </h:panelGroup>
+                                    Status Cetak KSM
+                                    <h:panelGroup> : </h:panelGroup>
+                                    <h:panelGroup rendered="#{!univBean.myPendaftaranActive.catakKSM}">
+                                        <font color="red">Belum</font>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{univBean.myPendaftaranActive.catakKSM}">
+                                        <font color="green">Sudah</font><font color="navy">#{univBean.myPendaftaranActive.tglCetakKSM}</font>
+                                    </h:panelGroup>
+                                </h:panelGrid>
+
+                                <p:inputTextarea rows="3" cols="50" disabled="true" value="#{univBean.myPendaftaranActive.comment}"/> 
+
+                                <br/>
+                                <p style="color: red; font-weight: bold;">
+                                    Pastika semua syarat pendaftaran Anda sudah dipenuhi.<br/>
+                                    Periksa kembali semua status sehari sebelum tanggal pencetakan KSM.
+                                </p>
+
+                                <p:dataTable value="#{univBean.myPendaftaranActive.pendaftaranDetailList}" var="list">
+                                    <p:column width="75" headerText="Kode Kuliah">
+                                        #{list.idKelas.idOpenMKPML.kodeMK}
+                                    </p:column>
+                                    <p:column headerText="Nama Mata Kuliah">
+                                        #{list.idKelas.idOpenMKPML.mataKuliah.namaMK}
+                                    </p:column>
+                                    <p:column width="50" headerText="Kelas">
+                                        #{list.idKelas.kelas}
+                                    </p:column>
+                                    <p:column width="50" headerText="SKS">
+                                        #{list.idKelas.idOpenMKPML.mataKuliah.sks}
+                                    </p:column>
+                                    <p:column width="50" headerText="Status">
+                                        #{list.statusMKString}
+                                    </p:column>
+                                    <p:column width="150" headerText="Komen">
+                                        #{list.komen}
+                                    </p:column>
+                                </p:dataTable>
+                                <br/>
+                            </div></center><br/>
+                        <!-- end .content --></div>
+                    <div class="footer"><ui:include src="include/footer.xhtml"/></div><!-- end .footer -->
+                </div>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup rendered="false">
+            <ui:include src="lock.xhtml"/>
+        </h:panelGroup>
+    </h:body>
+</html>
+

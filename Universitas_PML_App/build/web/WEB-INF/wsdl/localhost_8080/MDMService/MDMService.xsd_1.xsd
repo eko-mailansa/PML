@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service/">
+
+<xs:element name="createDosen" type="tns:createDosen"/>
+
+<xs:element name="findAllDosen" type="tns:findAllDosen"/>
+
+<xs:element name="findAllDosenResponse" type="tns:findAllDosenResponse"/>
+
+<xs:element name="findAllFakultas" type="tns:findAllFakultas"/>
+
+<xs:element name="findAllFakultasResponse" type="tns:findAllFakultasResponse"/>
+
+<xs:element name="findAllOpsi" type="tns:findAllOpsi"/>
+
+<xs:element name="findAllOpsiResponse" type="tns:findAllOpsiResponse"/>
+
+<xs:element name="findCekDosenWaliByNIP" type="tns:findCekDosenWaliByNIP"/>
+
+<xs:element name="findCekDosenWaliByNIPResponse" type="tns:findCekDosenWaliByNIPResponse"/>
+
+<xs:element name="findDosenWaliByNIP" type="tns:findDosenWaliByNIP"/>
+
+<xs:element name="findDosenWaliByNIPResponse" type="tns:findDosenWaliByNIPResponse"/>
+
+<xs:element name="findDosenWaliByNoReg" type="tns:findDosenWaliByNoReg"/>
+
+<xs:element name="findDosenWaliByNoRegResponse" type="tns:findDosenWaliByNoRegResponse"/>
+
+<xs:element name="findFakultasByIdFak" type="tns:findFakultasByIdFak"/>
+
+<xs:element name="findFakultasByIdFakResponse" type="tns:findFakultasByIdFakResponse"/>
+
+<xs:element name="findMahasiswaByNIM" type="tns:findMahasiswaByNIM"/>
+
+<xs:element name="findMahasiswaByNIMResponse" type="tns:findMahasiswaByNIMResponse"/>
+
+<xs:element name="findMataKuliahByIdOpsi" type="tns:findMataKuliahByIdOpsi"/>
+
+<xs:element name="findMataKuliahByIdOpsiResponse" type="tns:findMataKuliahByIdOpsiResponse"/>
+
+<xs:element name="findMataKuliahByProgramStudi" type="tns:findMataKuliahByProgramStudi"/>
+
+<xs:element name="findMataKuliahByProgramStudiResponse" type="tns:findMataKuliahByProgramStudiResponse"/>
+
+<xs:element name="findMataKuliahByidMK" type="tns:findMataKuliahByidMK"/>
+
+<xs:element name="findMataKuliahByidMKResponse" type="tns:findMataKuliahByidMKResponse"/>
+
+<xs:element name="findProgramStudiByFakultas" type="tns:findProgramStudiByFakultas"/>
+
+<xs:element name="findProgramStudiByFakultasResponse" type="tns:findProgramStudiByFakultasResponse"/>
+
+<xs:element name="findProgramStudiByIdProg" type="tns:findProgramStudiByIdProg"/>
+
+<xs:element name="findProgramStudiByIdProgResponse" type="tns:findProgramStudiByIdProgResponse"/>
+
+<xs:element name="findSemesterActive" type="tns:findSemesterActive"/>
+
+<xs:element name="findSemesterActiveResponse" type="tns:findSemesterActiveResponse"/>
+
+<xs:element name="findSemesterByidSemester" type="tns:findSemesterByidSemester"/>
+
+<xs:element name="findSemesterByidSemesterResponse" type="tns:findSemesterByidSemesterResponse"/>
+
+<xs:element name="findStatusBayarByNoReg" type="tns:findStatusBayarByNoReg"/>
+
+<xs:element name="findStatusBayarByNoRegResponse" type="tns:findStatusBayarByNoRegResponse"/>
+
+<xs:complexType name="findFakultasByIdFak">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFakultasByIdFakResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fakultas" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fakultas">
+<xs:sequence>
+<xs:element name="idFak" type="xs:int" minOccurs="0"/>
+<xs:element name="keteranganFak" type="xs:string" minOccurs="0"/>
+<xs:element name="namaFak" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllFakultas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllFakultasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fakultas" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProgramStudiByFakultas">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProgramStudiByFakultasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:programStudi" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="programStudi">
+<xs:sequence>
+<xs:element name="idFak" type="xs:int"/>
+<xs:element name="idProg" type="xs:int" minOccurs="0"/>
+<xs:element name="ketFak" type="xs:string" minOccurs="0"/>
+<xs:element name="namaFak" type="xs:string" minOccurs="0"/>
+<xs:element name="namaProg" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllOpsi">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllOpsiResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:opsi" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="opsi">
+<xs:sequence>
+<xs:element name="idOpsi" type="xs:int" minOccurs="0"/>
+<xs:element name="namaOpsi" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSemesterActive">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findSemesterActiveResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:semester" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="semester">
+<xs:sequence>
+<xs:element name="idSemester" type="xs:int" minOccurs="0"/>
+<xs:element name="semester" type="xs:int"/>
+<xs:element name="tahun1" type="xs:int"/>
+<xs:element name="tahun2" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createDosen">
+<xs:sequence>
+<xs:element name="entity" type="tns:dosen" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dosen">
+<xs:sequence>
+<xs:element name="namaDosen" type="xs:string" minOccurs="0"/>
+<xs:element name="nip" type="xs:string" minOccurs="0"/>
+<xs:element name="peran" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllDosen">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllDosenResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dosen" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProgramStudiByIdProg">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProgramStudiByIdProgResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:programStudi" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMahasiswaByNIM">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMahasiswaByNIMResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mahasiswa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mahasiswa">
+<xs:sequence>
+<xs:element name="alamat" type="xs:string" minOccurs="0"/>
+<xs:element name="idProg" type="xs:int"/>
+<xs:element name="kodePos" type="xs:string" minOccurs="0"/>
+<xs:element name="namaMahasiswa" type="xs:string" minOccurs="0"/>
+<xs:element name="nim" type="xs:string" minOccurs="0"/>
+<xs:element name="noReg" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findStatusBayarByNoReg">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findStatusBayarByNoRegResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusBayar" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="statusBayar">
+<xs:sequence>
+<xs:element name="idSemester" type="xs:int"/>
+<xs:element name="idStatusBayar" type="xs:int" minOccurs="0"/>
+<xs:element name="jenisBayar" type="xs:string" minOccurs="0"/>
+<xs:element name="jumBayar" type="xs:double"/>
+<xs:element name="noReg" type="xs:string" minOccurs="0"/>
+<xs:element name="semester" type="xs:int"/>
+<xs:element name="statusAktif" type="xs:boolean"/>
+<xs:element name="statusAktifString" type="xs:string" minOccurs="0"/>
+<xs:element name="statusBayar" type="xs:boolean"/>
+<xs:element name="statusBayarString" type="xs:string" minOccurs="0"/>
+<xs:element name="statusDaftar" type="xs:boolean"/>
+<xs:element name="statusDaftarString" type="xs:string" minOccurs="0"/>
+<xs:element name="tahun1" type="xs:int"/>
+<xs:element name="tahun2" type="xs:int"/>
+<xs:element name="tglBayar" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="tglBayarString" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDosenWaliByNIP">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDosenWaliByNIPResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dosen" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByidMK">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByidMKResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mataKuliah" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mataKuliah">
+<xs:sequence>
+<xs:element name="idMK" type="xs:string" minOccurs="0"/>
+<xs:element name="idProg" type="xs:int"/>
+<xs:element name="jumBangku" type="xs:int"/>
+<xs:element name="jumKelas" type="xs:int"/>
+<xs:element name="namaMK" type="xs:string" minOccurs="0"/>
+<xs:element name="noUrut" type="xs:int"/>
+<xs:element name="opsi" type="xs:string" minOccurs="0"/>
+<xs:element name="opsiString" type="xs:string" minOccurs="0"/>
+<xs:element name="prasyarat" type="xs:string" minOccurs="0"/>
+<xs:element name="semester" type="xs:int"/>
+<xs:element name="silabus" type="xs:string" minOccurs="0"/>
+<xs:element name="sks" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByIdOpsi">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByIdOpsiResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mataKuliah" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDosenWaliByNoReg">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDosenWaliByNoRegResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dosenWali" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dosenWali">
+<xs:sequence>
+<xs:element name="idWali" type="xs:int" minOccurs="0"/>
+<xs:element name="nip" type="xs:string" minOccurs="0"/>
+<xs:element name="noreg" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCekDosenWaliByNIP">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCekDosenWaliByNIPResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dosenWali" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByProgramStudi">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMataKuliahByProgramStudiResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mataKuliah" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSemesterByidSemester">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSemesterByidSemesterResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:semester" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
