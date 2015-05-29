@@ -32,12 +32,16 @@ public class ObjectFactory {
     private final static QName _FindAllFakultas_QNAME = new QName("http://service/", "findAllFakultas");
     private final static QName _FindMahasiswaByNIMResponse_QNAME = new QName("http://service/", "findMahasiswaByNIMResponse");
     private final static QName _FindProgramStudiByFakultas_QNAME = new QName("http://service/", "findProgramStudiByFakultas");
+    private final static QName _FindMahasiswaWaliByNIPResponse_QNAME = new QName("http://service/", "findMahasiswaWaliByNIPResponse");
+    private final static QName _FindStatusBayarBySemesterDanNoReg_QNAME = new QName("http://service/", "findStatusBayarBySemesterDanNoReg");
     private final static QName _FindCekDosenWaliByNIP_QNAME = new QName("http://service/", "findCekDosenWaliByNIP");
     private final static QName _FindDosenWaliByNIPResponse_QNAME = new QName("http://service/", "findDosenWaliByNIPResponse");
     private final static QName _FindProgramStudiByFakultasResponse_QNAME = new QName("http://service/", "findProgramStudiByFakultasResponse");
+    private final static QName _FindStatusBayarBySemesterDanNoRegResponse_QNAME = new QName("http://service/", "findStatusBayarBySemesterDanNoRegResponse");
     private final static QName _FindDosenWaliByNoRegResponse_QNAME = new QName("http://service/", "findDosenWaliByNoRegResponse");
     private final static QName _FindMataKuliahByProgramStudiResponse_QNAME = new QName("http://service/", "findMataKuliahByProgramStudiResponse");
     private final static QName _FindStatusBayarByNoRegResponse_QNAME = new QName("http://service/", "findStatusBayarByNoRegResponse");
+    private final static QName _FindMahasiswaWaliByNIP_QNAME = new QName("http://service/", "findMahasiswaWaliByNIP");
     private final static QName _FindMataKuliahByIdOpsi_QNAME = new QName("http://service/", "findMataKuliahByIdOpsi");
     private final static QName _FindMataKuliahByidMK_QNAME = new QName("http://service/", "findMataKuliahByidMK");
     private final static QName _CreateDosen_QNAME = new QName("http://service/", "createDosen");
@@ -234,6 +238,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindMahasiswaWaliByNIPResponse }
+     * 
+     */
+    public FindMahasiswaWaliByNIPResponse createFindMahasiswaWaliByNIPResponse() {
+        return new FindMahasiswaWaliByNIPResponse();
+    }
+
+    /**
      * Create an instance of {@link FindAllFakultas }
      * 
      */
@@ -274,11 +286,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindStatusBayarBySemesterDanNoReg }
+     * 
+     */
+    public FindStatusBayarBySemesterDanNoReg createFindStatusBayarBySemesterDanNoReg() {
+        return new FindStatusBayarBySemesterDanNoReg();
+    }
+
+    /**
      * Create an instance of {@link FindMataKuliahByidMK }
      * 
      */
     public FindMataKuliahByidMK createFindMataKuliahByidMK() {
         return new FindMataKuliahByidMK();
+    }
+
+    /**
+     * Create an instance of {@link FindMahasiswaWaliByNIP }
+     * 
+     */
+    public FindMahasiswaWaliByNIP createFindMahasiswaWaliByNIP() {
+        return new FindMahasiswaWaliByNIP();
     }
 
     /**
@@ -319,6 +347,14 @@ public class ObjectFactory {
      */
     public FindProgramStudiByFakultasResponse createFindProgramStudiByFakultasResponse() {
         return new FindProgramStudiByFakultasResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindStatusBayarBySemesterDanNoRegResponse }
+     * 
+     */
+    public FindStatusBayarBySemesterDanNoRegResponse createFindStatusBayarBySemesterDanNoRegResponse() {
+        return new FindStatusBayarBySemesterDanNoRegResponse();
     }
 
     /**
@@ -474,6 +510,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindMahasiswaWaliByNIPResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "findMahasiswaWaliByNIPResponse")
+    public JAXBElement<FindMahasiswaWaliByNIPResponse> createFindMahasiswaWaliByNIPResponse(FindMahasiswaWaliByNIPResponse value) {
+        return new JAXBElement<FindMahasiswaWaliByNIPResponse>(_FindMahasiswaWaliByNIPResponse_QNAME, FindMahasiswaWaliByNIPResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindStatusBayarBySemesterDanNoReg }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "findStatusBayarBySemesterDanNoReg")
+    public JAXBElement<FindStatusBayarBySemesterDanNoReg> createFindStatusBayarBySemesterDanNoReg(FindStatusBayarBySemesterDanNoReg value) {
+        return new JAXBElement<FindStatusBayarBySemesterDanNoReg>(_FindStatusBayarBySemesterDanNoReg_QNAME, FindStatusBayarBySemesterDanNoReg.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FindCekDosenWaliByNIP }{@code >}}
      * 
      */
@@ -501,6 +555,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindStatusBayarBySemesterDanNoRegResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "findStatusBayarBySemesterDanNoRegResponse")
+    public JAXBElement<FindStatusBayarBySemesterDanNoRegResponse> createFindStatusBayarBySemesterDanNoRegResponse(FindStatusBayarBySemesterDanNoRegResponse value) {
+        return new JAXBElement<FindStatusBayarBySemesterDanNoRegResponse>(_FindStatusBayarBySemesterDanNoRegResponse_QNAME, FindStatusBayarBySemesterDanNoRegResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FindDosenWaliByNoRegResponse }{@code >}}
      * 
      */
@@ -525,6 +588,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://service/", name = "findStatusBayarByNoRegResponse")
     public JAXBElement<FindStatusBayarByNoRegResponse> createFindStatusBayarByNoRegResponse(FindStatusBayarByNoRegResponse value) {
         return new JAXBElement<FindStatusBayarByNoRegResponse>(_FindStatusBayarByNoRegResponse_QNAME, FindStatusBayarByNoRegResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindMahasiswaWaliByNIP }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "findMahasiswaWaliByNIP")
+    public JAXBElement<FindMahasiswaWaliByNIP> createFindMahasiswaWaliByNIP(FindMahasiswaWaliByNIP value) {
+        return new JAXBElement<FindMahasiswaWaliByNIP>(_FindMahasiswaWaliByNIP_QNAME, FindMahasiswaWaliByNIP.class, null, value);
     }
 
     /**

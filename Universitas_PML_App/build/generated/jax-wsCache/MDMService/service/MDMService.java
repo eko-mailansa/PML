@@ -255,6 +255,39 @@ public interface MDMService {
      * 
      * @param param
      * @return
+     *     returns java.util.List<service.Mahasiswa>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findMahasiswaWaliByNIP", targetNamespace = "http://service/", className = "service.FindMahasiswaWaliByNIP")
+    @ResponseWrapper(localName = "findMahasiswaWaliByNIPResponse", targetNamespace = "http://service/", className = "service.FindMahasiswaWaliByNIPResponse")
+    @Action(input = "http://service/MDMService/findMahasiswaWaliByNIPRequest", output = "http://service/MDMService/findMahasiswaWaliByNIPResponse")
+    public List<Mahasiswa> findMahasiswaWaliByNIP(
+        @WebParam(name = "param", targetNamespace = "")
+        String param);
+
+    /**
+     * 
+     * @param param
+     * @param param2
+     * @return
+     *     returns service.StatusBayar
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findStatusBayarBySemesterDanNoReg", targetNamespace = "http://service/", className = "service.FindStatusBayarBySemesterDanNoReg")
+    @ResponseWrapper(localName = "findStatusBayarBySemesterDanNoRegResponse", targetNamespace = "http://service/", className = "service.FindStatusBayarBySemesterDanNoRegResponse")
+    @Action(input = "http://service/MDMService/findStatusBayarBySemesterDanNoRegRequest", output = "http://service/MDMService/findStatusBayarBySemesterDanNoRegResponse")
+    public StatusBayar findStatusBayarBySemesterDanNoReg(
+        @WebParam(name = "param", targetNamespace = "")
+        int param,
+        @WebParam(name = "param2", targetNamespace = "")
+        String param2);
+
+    /**
+     * 
+     * @param param
+     * @return
      *     returns service.Dosen
      */
     @WebMethod

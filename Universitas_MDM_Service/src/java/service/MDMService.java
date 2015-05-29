@@ -119,5 +119,15 @@ public class MDMService {
     public List<MataKuliah> findMataKuliahByIdOpsi(@WebParam(name = "param") int param) {
         return ejbRef.findMataKuliahByIdOpsi(param);
     }
+
+    @WebMethod(operationName = "findMahasiswaWaliByNIP")
+    public List<Mahasiswa> findMahasiswaWaliByNIP(@WebParam(name = "param") String param) {
+        return ejbRef.findMahasiswaWaliByNIP(param);
+    }
+
+    @WebMethod(operationName = "findStatusBayarBySemesterDanNoReg")
+    public StatusBayar findStatusBayarBySemesterDanNoReg(@WebParam(name = "param") int param, @WebParam(name = "param2") String param2) {
+        return ejbRef.findStatusBayarBySemesterDanNoReg(param, param2);
+    }
     
 }

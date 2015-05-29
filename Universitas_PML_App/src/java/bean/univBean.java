@@ -10,13 +10,13 @@ import control.OpenmkpmlFacade;
 import control.PendaftaranFacade;
 import control.SettingFacade;
 import control.UserLoginFacade;
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
@@ -26,6 +26,7 @@ import model.Pendaftaran;
 import model.PendaftaranDetail;
 import model.Setting;
 import model.UserLogin;
+import org.primefaces.context.RequestContext;
 import service.Dosen;
 import service.DosenWali;
 import service.Fakultas;
@@ -83,12 +84,25 @@ public class univBean implements Serializable {
     //pendaftaran
     private List<Openmkpml> listDaftar;
     private List<Openmkpml> myDaftar;
+    private boolean cekBayar;
+    //wali
+    private List<Mahasiswa> listWali;
+    private Pendaftaran pendaftaranWali;
+    private Mahasiswa mahasiswaWali;
 
     public univBean() {
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean isCekBayar() {
+        return cekBayar;
+    }
+
+    public void setCekBayar(boolean cekBayar) {
+        this.cekBayar = cekBayar;
     }
 
     public void setUsername(String username) {
@@ -100,9 +114,30 @@ public class univBean implements Serializable {
         return daftarKelasPML;
     }
 
+    public Mahasiswa getMahasiswaWali() {
+        return mahasiswaWali;
+    }
+
+    public void setMahasiswaWali(Mahasiswa mahasiswaWali) {
+        this.mahasiswaWali = mahasiswaWali;
+    }
+
+    public Pendaftaran getPendaftaranWali() {
+        return pendaftaranWali;
+    }
+
+    public void setPendaftaranWali(Pendaftaran pendaftaranWali) {
+        this.pendaftaranWali = pendaftaranWali;
+    }
+
     public List<Openmkpml> getListDaftar() {
         listDaftar = openmkpmlSession.findOpenMKPMLByIDSemesterDanIDPrody(semesterActive.getIdSemester(), programStudi.getIdProg());
         return listDaftar;
+    }
+
+    public List<Mahasiswa> getListWali() {
+        listWali = findMahasiswaWaliByNIP(dosen.getNip());
+        return listWali;
     }
 
     public List<Openmkpml> getMyDaftar() {
@@ -254,6 +289,7 @@ public class univBean implements Serializable {
                 username = null;
                 password = null;
                 if (userLogin.getPeran() == 4) {
+                    semesterActive = findSemesterActive();
                     userLogin.setPeranKu("Mahasiswa");
                     userLogin.setMenuKu("include/mahasiswa.xhtml");
                     mahasiswa = findMahasiswaByNIM(userLogin.getUserName());
@@ -263,6 +299,12 @@ public class univBean implements Serializable {
                     dosenwali = findDosenWaliByNoReg(mahasiswa.getNoReg());
                     dosen = findDosenWaliByNIP(dosenwali.getNip());
                     grade = Integer.parseInt(mahasiswa.getNim().substring(0, 1));
+                    StatusBayar sb = findStatusBayarBySemesterDanNoReg(semesterActive.getIdSemester(), mahasiswa.getNoReg());
+                    if (sb == null) {
+                        cekBayar = false;
+                    } else {
+                        cekBayar = true;
+                    }
                 }
                 if (userLogin.getPeran() == 1) {
                     dosen = findDosenWaliByNIP(userLogin.getUserName());
@@ -353,6 +395,20 @@ public class univBean implements Serializable {
         return "m_displayStatusMhs?faces-redirect=true";
     }
 
+    public String viewWali(Mahasiswa m) {
+        semesterActive = findSemesterActive();
+        mahasiswaWali = m;
+        programStudi = findProgramStudiByIdProg(mahasiswaWali.getIdProg());
+        fakMahasiswa = findFakultasByIdFak(programStudi.getIdFak());
+        pendaftaranWali = pendaftaranSession.findPendaftaranByNoRegDanIdSemester(m.getNoReg(), semesterActive.getIdSemester());
+        return "dw_lookwali?faces-redirect=true";
+    }
+
+    public void saveWali() {
+        pendaftaranSession.updatePML(pendaftaranWali);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Data Berhasil Disimpan."));
+    }
+
     private Mahasiswa findMahasiswaByNIM(java.lang.String param) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -414,5 +470,19 @@ public class univBean implements Serializable {
         // If the calling of port operations may lead to race condition some synchronization is required.
         service.MDMService port = service.getMDMServicePort();
         return port.findDosenWaliByNIP(param);
+    }
+
+    private java.util.List<service.Mahasiswa> findMahasiswaWaliByNIP(String param) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.MDMService port = service.getMDMServicePort();
+        return port.findMahasiswaWaliByNIP(param);
+    }
+
+    private StatusBayar findStatusBayarBySemesterDanNoReg(int param, java.lang.String param2) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.MDMService port = service.getMDMServicePort();
+        return port.findStatusBayarBySemesterDanNoReg(param, param2);
     }
 }

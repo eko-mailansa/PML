@@ -14,12 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -28,14 +25,6 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "pendaftaran_detail")
-@NamedQueries({
-    @NamedQuery(name = "PendaftaranDetail.findAll", query = "SELECT p FROM PendaftaranDetail p"),
-    @NamedQuery(name = "PendaftaranDetail.findByIdDaftarDetail", query = "SELECT p FROM PendaftaranDetail p WHERE p.idDaftarDetail = :idDaftarDetail"),
-    @NamedQuery(name = "PendaftaranDetail.findByKomen", query = "SELECT p FROM PendaftaranDetail p WHERE p.komen = :komen"),
-    @NamedQuery(name = "PendaftaranDetail.findByKonfirmasiPS", query = "SELECT p FROM PendaftaranDetail p WHERE p.konfirmasiPS = :konfirmasiPS"),
-    @NamedQuery(name = "PendaftaranDetail.findByStatusMK", query = "SELECT p FROM PendaftaranDetail p WHERE p.statusMK = :statusMK"),
-    @NamedQuery(name = "PendaftaranDetail.findByNilai", query = "SELECT p FROM PendaftaranDetail p WHERE p.nilai = :nilai"),
-    @NamedQuery(name = "PendaftaranDetail.findByNilaiPS", query = "SELECT p FROM PendaftaranDetail p WHERE p.nilaiPS = :nilaiPS")})
 public class PendaftaranDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,20 +33,12 @@ public class PendaftaranDetail implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDaftarDetail")
     private Integer idDaftarDetail;
-    @Basic(optional = false)
-    @Size(min = 1, max = 500)
-    @Column(name = "komen")
-    private String komen;
-    @Basic(optional = false)
     @Column(name = "konfirmasiPS")
-    private int konfirmasiPS;
-    @Basic(optional = false)
+    private boolean konfirmasiPS;
     @Column(name = "statusMK")
     private int statusMK;
-    @Basic(optional = false)
     @Column(name = "nilai")
     private float nilai;
-    @Basic(optional = false)
     @Size(min = 1, max = 2)
     @Column(name = "nilaiPS")
     private String nilaiPS;
@@ -77,15 +58,6 @@ public class PendaftaranDetail implements Serializable {
         this.idDaftarDetail = idDaftarDetail;
     }
 
-    public PendaftaranDetail(Integer idDaftarDetail, String komen, int konfirmasiPS, int statusMK, float nilai, String nilaiPS) {
-        this.idDaftarDetail = idDaftarDetail;
-        this.komen = komen;
-        this.konfirmasiPS = konfirmasiPS;
-        this.statusMK = statusMK;
-        this.nilai = nilai;
-        this.nilaiPS = nilaiPS;
-    }
-
     public Integer getIdDaftarDetail() {
         return idDaftarDetail;
     }
@@ -94,19 +66,11 @@ public class PendaftaranDetail implements Serializable {
         this.idDaftarDetail = idDaftarDetail;
     }
 
-    public String getKomen() {
-        return komen;
-    }
-
-    public void setKomen(String komen) {
-        this.komen = komen;
-    }
-
-    public int getKonfirmasiPS() {
+    public boolean getKonfirmasiPS() {
         return konfirmasiPS;
     }
 
-    public void setKonfirmasiPS(int konfirmasiPS) {
+    public void setKonfirmasiPS(boolean konfirmasiPS) {
         this.konfirmasiPS = konfirmasiPS;
     }
 

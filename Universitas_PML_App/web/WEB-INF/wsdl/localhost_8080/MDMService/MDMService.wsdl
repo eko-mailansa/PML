@@ -97,6 +97,18 @@
 <message name="findMataKuliahByIdOpsiResponse">
 <part name="parameters" element="tns:findMataKuliahByIdOpsiResponse"/>
 </message>
+<message name="findMahasiswaWaliByNIP">
+<part name="parameters" element="tns:findMahasiswaWaliByNIP"/>
+</message>
+<message name="findMahasiswaWaliByNIPResponse">
+<part name="parameters" element="tns:findMahasiswaWaliByNIPResponse"/>
+</message>
+<message name="findStatusBayarBySemesterDanNoReg">
+<part name="parameters" element="tns:findStatusBayarBySemesterDanNoReg"/>
+</message>
+<message name="findStatusBayarBySemesterDanNoRegResponse">
+<part name="parameters" element="tns:findStatusBayarBySemesterDanNoRegResponse"/>
+</message>
 <message name="findDosenWaliByNIP">
 <part name="parameters" element="tns:findDosenWaliByNIP"/>
 </message>
@@ -166,6 +178,14 @@
 <operation name="findMataKuliahByIdOpsi">
 <input wsam:Action="http://service/MDMService/findMataKuliahByIdOpsiRequest" message="tns:findMataKuliahByIdOpsi"/>
 <output wsam:Action="http://service/MDMService/findMataKuliahByIdOpsiResponse" message="tns:findMataKuliahByIdOpsiResponse"/>
+</operation>
+<operation name="findMahasiswaWaliByNIP">
+<input wsam:Action="http://service/MDMService/findMahasiswaWaliByNIPRequest" message="tns:findMahasiswaWaliByNIP"/>
+<output wsam:Action="http://service/MDMService/findMahasiswaWaliByNIPResponse" message="tns:findMahasiswaWaliByNIPResponse"/>
+</operation>
+<operation name="findStatusBayarBySemesterDanNoReg">
+<input wsam:Action="http://service/MDMService/findStatusBayarBySemesterDanNoRegRequest" message="tns:findStatusBayarBySemesterDanNoReg"/>
+<output wsam:Action="http://service/MDMService/findStatusBayarBySemesterDanNoRegResponse" message="tns:findStatusBayarBySemesterDanNoRegResponse"/>
 </operation>
 <operation name="findDosenWaliByNIP">
 <input wsam:Action="http://service/MDMService/findDosenWaliByNIPRequest" message="tns:findDosenWaliByNIP"/>
@@ -307,6 +327,24 @@
 </output>
 </operation>
 <operation name="findMataKuliahByIdOpsi">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findMahasiswaWaliByNIP">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findStatusBayarBySemesterDanNoReg">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

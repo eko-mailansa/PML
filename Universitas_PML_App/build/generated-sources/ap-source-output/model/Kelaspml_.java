@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import model.Openmkpml;
 import model.PendaftaranDetail;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-05-29T05:59:11")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-05-29T06:23:52")
 @StaticMetamodel(Kelaspml.class)
 public class Kelaspml_ { 
 

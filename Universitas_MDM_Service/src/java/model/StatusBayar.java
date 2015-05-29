@@ -234,8 +234,12 @@ public class StatusBayar implements Serializable {
         } else {
             statusDaftarString = "Belum Daftar";
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM YYYY hh:mm:ss");
-        tglBayarString = sdf.format(tglBayar);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM YYYY hh:mm:ss");
+            tglBayarString = sdf.format(tglBayar);
+        } catch (Exception e) {
+            tglBayarString = "";
+        }
     }
 
     @Override

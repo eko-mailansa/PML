@@ -76,7 +76,8 @@
                                 <h:panelGrid columns="3">
                                     Status Keuangan
                                     <h:panelGroup> : </h:panelGroup>
-                                    <h:panelGroup>#{univBean.userLogin.userName}</h:panelGroup>
+                                    <h:panelGroup rendered="#{univBean.cekBayar}">Lunas</h:panelGroup>
+                                    <h:panelGroup rendered="#{!univBean.cekBayar}">Belum Lunas</h:panelGroup>
                                     Status Kasus
                                     <h:panelGroup> : </h:panelGroup>
                                     <h:panelGroup><font color="navy">Tidak Ada</font></h:panelGroup>
@@ -121,9 +122,6 @@
                                     </p:column>
                                     <p:column width="50" headerText="Status">
                                         #{list.statusMKString}
-                                    </p:column>
-                                    <p:column width="150" headerText="Komen">
-                                        #{list.komen}
                                     </p:column>
                                 </p:dataTable>
                                 <br/>

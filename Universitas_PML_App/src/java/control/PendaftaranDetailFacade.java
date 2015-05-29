@@ -16,6 +16,7 @@ import model.PendaftaranDetail;
  */
 @Stateless
 public class PendaftaranDetailFacade extends AbstractFacade<PendaftaranDetail> {
+
     @PersistenceContext(unitName = "Universitas_PML_AppPU")
     private EntityManager em;
 
@@ -27,5 +28,5 @@ public class PendaftaranDetailFacade extends AbstractFacade<PendaftaranDetail> {
     public PendaftaranDetailFacade() {
         super(PendaftaranDetail.class);
     }
-    
+
 }

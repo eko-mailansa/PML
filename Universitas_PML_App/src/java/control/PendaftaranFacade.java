@@ -5,13 +5,12 @@
  */
 package control;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import model.Kelaspml;
-import model.Openmkpml;
 import model.Pendaftaran;
 import model.PendaftaranDetail;
 
@@ -35,7 +34,16 @@ public class PendaftaranFacade extends AbstractFacade<Pendaftaran> {
         em.persist(params);
         for (PendaftaranDetail pd : params.getPendaftaranDetailList()) {
             pd.setIdDaftar(params);
+            pd.setKonfirmasiPS(true);
             em.persist(pd);
+        }
+    }
+
+    public void updatePML(Pendaftaran params) {
+        params.setTglStatusApprove(new Date());
+        em.merge(params);
+        for (PendaftaranDetail pd : params.getPendaftaranDetailList()) {
+            em.merge(pd);
         }
     }
 

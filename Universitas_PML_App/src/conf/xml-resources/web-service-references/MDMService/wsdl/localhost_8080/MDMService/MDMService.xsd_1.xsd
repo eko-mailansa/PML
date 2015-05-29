@@ -34,6 +34,10 @@
 
 <xs:element name="findMahasiswaByNIMResponse" type="tns:findMahasiswaByNIMResponse"/>
 
+<xs:element name="findMahasiswaWaliByNIP" type="tns:findMahasiswaWaliByNIP"/>
+
+<xs:element name="findMahasiswaWaliByNIPResponse" type="tns:findMahasiswaWaliByNIPResponse"/>
+
 <xs:element name="findMataKuliahByIdOpsi" type="tns:findMataKuliahByIdOpsi"/>
 
 <xs:element name="findMataKuliahByIdOpsiResponse" type="tns:findMataKuliahByIdOpsiResponse"/>
@@ -65,6 +69,10 @@
 <xs:element name="findStatusBayarByNoReg" type="tns:findStatusBayarByNoReg"/>
 
 <xs:element name="findStatusBayarByNoRegResponse" type="tns:findStatusBayarByNoRegResponse"/>
+
+<xs:element name="findStatusBayarBySemesterDanNoReg" type="tns:findStatusBayarBySemesterDanNoReg"/>
+
+<xs:element name="findStatusBayarBySemesterDanNoRegResponse" type="tns:findStatusBayarBySemesterDanNoRegResponse"/>
 
 <xs:complexType name="findFakultasByIdFak">
 <xs:sequence>
@@ -299,6 +307,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="findMahasiswaWaliByNIP">
+<xs:sequence>
+<xs:element name="param" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMahasiswaWaliByNIPResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mahasiswa" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="findDosenWaliByNoReg">
 <xs:sequence>
 <xs:element name="param" type="xs:string" minOccurs="0"/>
@@ -352,6 +372,19 @@
 <xs:complexType name="findSemesterByidSemesterResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:semester" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findStatusBayarBySemesterDanNoReg">
+<xs:sequence>
+<xs:element name="param" type="xs:int"/>
+<xs:element name="param2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findStatusBayarBySemesterDanNoRegResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusBayar" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

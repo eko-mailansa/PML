@@ -226,4 +226,25 @@ public class MyFacade implements Serializable {
             return null;
         }
     }
+
+    public List<Mahasiswa> findMahasiswaWaliByNIP(String param) {
+        try {
+            Query q = em.createQuery("SELECT m FROM Mahasiswa m WHERE m.noReg IN (SELECT dw.noreg FROM DosenWali dw WHERE dw.nip = :param)");
+            q.setParameter("param", param);
+            return q.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public StatusBayar findStatusBayarBySemesterDanNoReg(int param, String param2) {
+        try {
+            Query q = em.createQuery("SELECT m FROM StatusBayar m WHERE m.idSemester = :param AND m.noReg = :param2");
+            q.setParameter("param", param);
+            q.setParameter("param2", param2);
+            return (StatusBayar) q.getResultList().get(0);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

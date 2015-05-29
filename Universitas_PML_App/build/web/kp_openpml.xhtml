@@ -38,8 +38,11 @@
                                     <p:column headerText="Nama MK">
                                         #{mk.namaMK}
                                     </p:column>
-                                    <p:column headerText="Semester">
+                                    <p:column headerText="Semester" rendered="#{mk.idProg == 135}">
                                         #{mk.semester}
+                                    </p:column>
+                                    <p:column headerText="Opsi" rendered="#{mk.idProg == 235}">
+                                        #{mk.opsiString}
                                     </p:column>
                                 </p:dataTable>
                                 <br/>

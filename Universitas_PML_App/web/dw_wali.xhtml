@@ -19,6 +19,7 @@
     <h:body>
         <h:panelGroup rendered="true">
             <h:form>
+                <p:growl showDetail="true"/>
                 <div class="container">
                     <div class="header"><ui:include src="include/header.xhtml"/></div><!-- end .header -->
                     <div class="sidebar1">
@@ -27,28 +28,15 @@
                     <div class="content2">
                         <ui:include src="include/title.xhtml"/>
                         <center><div align="center" style="width: 95%;">
-                                <h1>Open PML Semester #{univBean.semesterActive.semester} - #{univBean.semesterActive.tahun1}/#{univBean.semesterActive.tahun2}</h1>
-                                <p:separator/>
-                                <p:dataTable value="#{univBean.listMKBuka}" var="mk" selection="#{univBean.listMKPilih}" rowKey="#{mk.idMK}" stickyHeader="true">
-                                    <f:facet name="header">List Mata Kuliah Prodi #{univBean.programStudi.idProg}-#{univBean.programStudi.namaProg}</f:facet>
-                                    <p:column style="width: 20px;" selectionMode="multiple" />
-                                    <p:column headerText="Kode MK">
-                                        #{mk.idMK}
-                                    </p:column>
-                                    <p:column headerText="Nama MK">
-                                        #{mk.namaMK}
-                                    </p:column>
-                                    <p:column headerText="Semester" rendered="#{mk.idProg == 135}">
-                                        #{mk.semester}
-                                    </p:column>
-                                    <p:column headerText="Opsi" rendered="#{mk.idProg == 235}">
-                                        #{mk.opsiString}
-                                    </p:column>
+                                <h1>List Mahasiswa Wali</h1>
+                                <p:dataTable value="#{univBean.listWali}" var="mhs">
+                                    <p:column headerText="NIM">#{mhs.nim}</p:column>
+                                    <p:column headerText="Nama">#{mhs.namaMahasiswa}</p:column>
+                                    <p:column headerText="Wali"><h:commandLink value="wali" action="#{univBean.viewWali(mhs)}"/></p:column>
                                 </p:dataTable>
-                                <br/>
-                                <h:commandButton value="SUBMIT" action="#{univBean.submitViewPML()}"/>
-                                <br/>
+
                             </div></center>
+                        <br/>
                         <!-- end .content --></div>
                     <div class="footer"><ui:include src="include/footer.xhtml"/></div><!-- end .footer -->
                 </div>

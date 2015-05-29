@@ -9,7 +9,7 @@
             <p:menuitem value="Status Mahasiswa" outcome="m_displayStatusMhs" />
             <p:menuitem value="Status Pembayaran" outcome="m_statusPembayaran" />
             <p:menuitem value="Raport Mahasiswa" outcome="m_raport" />
-            <p:menuitem value="Pendaftaran PML" outcome="m_pendaftaran" />
+            <p:menuitem rendered="#{univBean.cekBayar}" value="Pendaftaran PML" outcome="m_pendaftaran" />
         </p:submenu>
     </p:menu>
 </html>

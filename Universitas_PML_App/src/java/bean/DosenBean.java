@@ -5,10 +5,10 @@
  */
 package bean;
 
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import javax.xml.ws.WebServiceRef;
 import service.*;
